@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Admin",
-  description: "Home page",
+  title: "Contact",
+  description: "Contact page",
 };
 
-export default function AdminHome() {
+export default function Products() {
   return (
     <div className="container py-4 bg-main-color text-white">
-      Admin: Home Page
+      User: Contact Page
     </div>
   );
 }
