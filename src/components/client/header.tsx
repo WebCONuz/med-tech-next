@@ -31,64 +31,66 @@ const Header = () => {
   ];
   return (
     <header className="shadow">
-      <div className="container flex items-center justify-between bg-main-color py-2">
-        <div className="flex items-center gap-x-4">
-          <Link href="#" className="flex items-center text-white">
-            <BsEnvelope className="text-lg mr-2" />
-            <span className="text-sm">med-exapmle@gmail.com</span>
-          </Link>
-          <Link href="#" className="flex items-center text-white">
-            <LiaPhoneVolumeSolid className="text-lg mr-2" />
-            <span className="text-sm">+998(90) 100-10-10</span>
-          </Link>
-          <Link href="#" className="flex items-center text-white">
-            <GrLocation className="text-lg mr-2" />
-            <span className="text-sm">15/A, Nest Tower, NYC</span>
-          </Link>
-        </div>
-        <div className="flex items-center gap-x-5">
-          <div className="flex items-center gap-x-2">
-            {/* darkmode btn */}
-            <button
-              className="cursor-pointer w-7 h-7 flex items-center justify-center outline-none border border-white dark:border-gray-600 rounded-md"
-              onClick={darkMode}
-            >
-              {isDark ? (
-                <IoMoon className="text-white" />
-              ) : (
-                <IoMdSunny className="text-lg text-white" />
-              )}
-            </button>
+      <div className="bg-main-color">
+        <div className="container flex items-center justify-between  py-2">
+          <div className="flex items-center gap-x-4">
+            <Link href="#" className="flex items-center text-white">
+              <BsEnvelope className="text-lg mr-2" />
+              <span className="text-sm">med-exapmle@gmail.com</span>
+            </Link>
+            <Link href="#" className="flex items-center text-white">
+              <LiaPhoneVolumeSolid className="text-lg mr-2" />
+              <span className="text-sm">+998(90) 100-10-10</span>
+            </Link>
+            <Link href="#" className="flex items-center text-white">
+              <GrLocation className="text-lg mr-2" />
+              <span className="text-sm">15/A, Nest Tower, NYC</span>
+            </Link>
+          </div>
+          <div className="flex items-center gap-x-5">
+            <div className="flex items-center gap-x-2">
+              {/* darkmode btn */}
+              <button
+                className="cursor-pointer w-7 h-7 flex items-center justify-center outline-none border border-white dark:border-gray-600 rounded-md"
+                onClick={darkMode}
+              >
+                {isDark ? (
+                  <IoMoon className="text-white" />
+                ) : (
+                  <IoMdSunny className="text-lg text-white" />
+                )}
+              </button>
 
-            {/* language */}
-            <div className="group relative z-10 h-7 flex items-center gap-x-[2px] border border-white rounded-md px-2 cursor-pointer">
-              <span className="text-sm text-white">English</span>
-              <FaAngleDown className=" text-white" />
-              <div className="absolute top-10 opacity-0 invisible right-0 w-[90px] bg-white border border-gray-100 rounded-md shadow-md overflow-hidden duration-200 group-hover:top-[29px] group-hover:opacity-100 group-hover:visible">
-                <button className="outline-none border-none py-2 text-sm w-full bg-transparent hover:bg-gray-100">
-                  English
-                </button>
-                <button className="outline-none border-none py-2 text-sm w-full bg-transparent hover:bg-gray-100">
-                  Russian
-                </button>
-                <button className="outline-none border-none py-2 text-sm w-full bg-transparent hover:bg-gray-100">
-                  Uzbek
-                </button>
+              {/* language */}
+              <div className="group relative z-10 h-7 flex items-center gap-x-[2px] border border-white rounded-md px-2 cursor-pointer">
+                <span className="text-sm text-white">English</span>
+                <FaAngleDown className=" text-white" />
+                <div className="absolute top-10 opacity-0 invisible right-0 w-[90px] bg-white border border-gray-100 rounded-md shadow-md overflow-hidden duration-200 group-hover:top-[29px] group-hover:opacity-100 group-hover:visible">
+                  <button className="outline-none border-none py-2 text-sm w-full bg-transparent hover:bg-gray-100">
+                    English
+                  </button>
+                  <button className="outline-none border-none py-2 text-sm w-full bg-transparent hover:bg-gray-100">
+                    Russian
+                  </button>
+                  <button className="outline-none border-none py-2 text-sm w-full bg-transparent hover:bg-gray-100">
+                    Uzbek
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* socials */}
-          <div className="flex gap-x-3">
-            <Link href="#" className="text-white text-lg">
-              <FaFacebook />
-            </Link>
-            <Link href="#" className="text-white text-lg">
-              <FaTelegram />
-            </Link>
-            <Link href="#" className="text-white text-lg">
-              <FiInstagram />
-            </Link>
+            {/* socials */}
+            <div className="flex gap-x-3">
+              <Link href="#" className="text-white text-lg">
+                <FaFacebook />
+              </Link>
+              <Link href="#" className="text-white text-lg">
+                <FaTelegram />
+              </Link>
+              <Link href="#" className="text-white text-lg">
+                <FiInstagram />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
