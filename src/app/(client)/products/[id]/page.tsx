@@ -44,7 +44,7 @@ export default async function ProductDetails({ params }: Props) {
                 ( 95 Reviews )
               </span>
             </div>
-            <h4 className="text-3xl font-bold mb-4">Hand Sanitizer</h4>
+            <h1 className="text-3xl font-bold mb-4">Hand Sanitizer</h1>
             <div className="flex items-center mb-4">
               <b className="mr-4">Category:</b>
               <span className="bg-main-bg text-gray-800 py-1 px-2 rounded-md text-sm mr-1">

@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import Hero from "@/components/client/hero";
+import Iframe from "@/components/ui/iframe";
+import ContactForm from "@/components/client/contact-form";
+import { GrLocation } from "react-icons/gr";
+import { BsEnvelope } from "react-icons/bs";
+import { LiaPhoneVolumeSolid } from "react-icons/lia";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -7,8 +13,52 @@ export const metadata: Metadata = {
 
 export default function Products() {
   return (
-    <div className="container py-4 bg-main-color text-white">
-      User: Contact Page
-    </div>
+    <>
+      <Hero
+        title="Contact us"
+        description="Lorem ipsum dolor set amequet dara carqamaquer ture"
+      />
+      <section className="pt-15 pb-24">
+        <div className="container flex gap-x-10">
+          <div className="w-1/2">
+            <ContactForm />
+          </div>
+          <div className="w-1/2">
+            <Iframe
+              url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.3119420044563!2d69.28202807557582!3d41.345572998588544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b5577d651f7%3A0x53e8424358347ba7!2sToshkent%20teleminorasi%2C%20%D0%A2%D0%BEshkent%2C%20Toshkent%2C%20O%CA%BBzbekiston!5e0!3m2!1suz!2s!4v1743693336894!5m2!1suz!2s"
+              title="Interactive map iframe"
+            />
+            <div className="flex items-center gap-x-4 mt-8">
+              <div className="w-10 h-10 rounded-full bg-gray-200 text-main-color flex items-center justify-center">
+                <GrLocation className="text-xl" />
+              </div>
+              <p className="max-w-[200px] text-gray-600 leading-6">
+                211 Lehner Valleys Apt. 287 Harrisstad
+              </p>
+            </div>
+            <div className="flex items-center gap-x-4 mt-4">
+              <div className="w-10 h-10 rounded-full bg-gray-200 text-main-color flex items-center justify-center">
+                <LiaPhoneVolumeSolid className="text-xl" />
+              </div>
+              <p className="max-w-[200px] text-gray-600 leading-6">
+                +998(90) 100-10-10
+                <br />
+                +998(90) 100-10-11
+              </p>
+            </div>
+            <div className="flex items-center gap-x-4 mt-4">
+              <div className="w-10 h-10 rounded-full bg-gray-200 text-main-color flex items-center justify-center">
+                <BsEnvelope className="text-xl" />
+              </div>
+              <p className="max-w-[300px] text-gray-600 leading-6">
+                med-exapmle-1@gmail.com
+                <br />
+                med-exapmle-2@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
