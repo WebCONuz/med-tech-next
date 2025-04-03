@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Hero from "@/components/client/hero";
 import Title from "@/components/ui/title";
 import MainSlider from "@/components/client/main-slider";
 import ProductCard from "@/components/ui/product-card";
-import { allProducts, sertificateData } from "@/types/static.data";
-import Link from "next/link";
 import Button from "@/components/ui/button";
+import { allProducts, sertificateData } from "@/types/static.data";
 
 export const metadata: Metadata = {
   title: "About",
@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const actionFn = () => console.log("+++");
   return (
     <main>
       <Hero

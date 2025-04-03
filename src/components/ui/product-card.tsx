@@ -1,13 +1,8 @@
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 import { BsStarHalf } from "react-icons/bs";
+import { ProductItem } from "@/types/product.types";
 
-interface ProductItem {
-  id: number;
-  image: string;
-  title?: string;
-  description?: string;
-}
 const ProductCard = ({ data }: { data: ProductItem }) => {
   return (
     <div className="relative shadow-xl rounded-lg overflow-hidden">
