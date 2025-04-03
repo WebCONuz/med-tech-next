@@ -84,7 +84,12 @@ export default async function ProductDetails({ params }: Props) {
               sapiente. Ipsam nisi, ex voluptatem aliquam veniam alias velit eos
               minima nulla laboriosam.
             </p>
-            <Button>Contact us</Button>
+            <Link
+              href={`/orders/${id}`}
+              className="rounded font-medium transition-colors py-2 px-4 text-center bg-main-color hover:bg-main-bg text-white hover:text-black"
+            >
+              Order
+            </Link>
           </div>
         </div>
       </div>

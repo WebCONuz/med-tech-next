@@ -76,7 +76,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="pb-20">
+      <section className="pb-24">
         <div className="container">
           <Title title="Sertifications" />
           <MainSlider items={sertificateData} />

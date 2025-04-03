@@ -25,10 +25,9 @@ const Header = () => {
   };
 
   const navLinks = [
-    { name: "About", href: "/" },
-    { name: "Products", href: "/products" },
-    { name: "Orders", href: "/orders" },
-    { name: "Contact", href: "/contact" },
+    { name: "About us", href: "/" },
+    { name: "All products", href: "/products" },
+    { name: "Contact us", href: "/contact" },
   ];
   return (
     <header className="shadow">
