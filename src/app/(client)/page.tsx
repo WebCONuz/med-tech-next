@@ -2,104 +2,25 @@ import type { Metadata } from "next";
 import Hero from "@/components/client/hero";
 import Title from "@/components/ui/title";
 import MainSlider from "@/components/client/main-slider";
+import ProductCard from "@/components/ui/product-card";
+import { allProducts, sertificateData } from "@/types/static.data";
+import Link from "next/link";
+import Button from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About",
   description: "About page",
 };
 
-const productData = [
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "Lorem ipsum dolor sit",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor",
-  },
-];
-
-const sertificateData = [
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "CE-02-1",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "CE-02-1",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "CE-02-1",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "CE-02-1",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "CE-02-1",
-  },
-  {
-    image:
-      "https://www.swissyhealthcare.com/wp-content/uploads/2019/05/Pharma-Service.jpg",
-    title: "CE-02-1",
-  },
-];
-
 export default function About() {
+  const actionFn = () => console.log("+++");
   return (
-    <>
+    <main>
       <Hero
         title="About us"
         description="A pharmacy with world-class service."
       />
+
       <section className="py-16">
         <div className="container">
           <div className="flex gap-x-14">
@@ -142,30 +63,26 @@ export default function About() {
       <section className="pb-16">
         <div className="container">
           <Title title="Featured Products" />
-          <MainSlider items={productData} />
+          <div className="grid grid-cols-5 gap-6">
+            {allProducts.map(
+              (item) =>
+                item.id < 6 && (
+                  <ProductCard key={item.id + 2 + Math.random()} data={item} />
+                )
+            )}
+          </div>
+          <Link href="/products" className="w-full flex justify-center mt-10">
+            <Button>Show all products</Button>
+          </Link>
         </div>
       </section>
 
-      <section className="pb-16">
+      <section className="pb-20">
         <div className="container">
           <Title title="Sertifications" />
-          <div className="grid grid-cols-4 gap-6">
-            {sertificateData.map((item, index) => (
-              <div
-                key={index + 1 + Math.random()}
-                className="text-center p-2 shadow-lg"
-              >
-                <img
-                  src={item.image}
-                  alt="serticete-image"
-                  className="w-full h-[300px] object-cover rounded-md mb-3"
-                />
-                <h4 className="text-center text-gray-600">{item.title}</h4>
-              </div>
-            ))}
-          </div>
+          <MainSlider items={sertificateData} />
         </div>
       </section>
-    </>
+    </main>
   );
 }

@@ -11,6 +11,7 @@ const Slider = dynamic(() => import("react-slick"), {
 }) as React.ComponentType<Settings & { children?: React.ReactNode }>;
 
 interface SlideItem {
+  id: number;
   image: string;
   title?: string;
   description?: string;
@@ -22,9 +23,9 @@ interface CarouselProps {
 
 const MainSlider: React.FC<CarouselProps> = ({ items }) => {
   const defaultSettings: Settings = {
-    dots: false,
+    dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -35,7 +36,7 @@ const MainSlider: React.FC<CarouselProps> = ({ items }) => {
       <Slider {...defaultSettings}>
         {items.map((item, index) => (
           <div key={index + Math.random()} className="pl-[2px] pr-6 py-1">
-            <SliderCard id={index + 1} data={item} />
+            <SliderCard data={item} />
           </div>
         ))}
       </Slider>

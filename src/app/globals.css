@@ -37,3 +37,17 @@ body {
   color: #fff;
   background-color: #0d8464;
 }
+
+/* slider css */
+.slider-container .slick-dots {
+  bottom: -40px !important;
+}
+.slider-container .slick-dots li {
+  margin: 0 2px !important;
+}
+.slider-container .slick-dots li button::before {
+  font-size: 10px !important;
+}
+.slider-container .slick-dots li.slick-active button::before {
+  color: #10ab81 !important;
+}
