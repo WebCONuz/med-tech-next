@@ -29,13 +29,36 @@ const MainSlider: React.FC<CarouselProps> = ({ items }) => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className="slider-container">
       <Slider {...defaultSettings}>
         {items.map((item, index) => (
-          <div key={index + Math.random()} className="pl-[2px] pr-6 py-1">
+          <div
+            key={index + Math.random()}
+            className="pl-1 sm:pl-[2px] pr-1 sm:pr-4 lg:pr-6 py-1"
+          >
             <SliderCard data={item} />
           </div>
         ))}

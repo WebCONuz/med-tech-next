@@ -106,8 +106,12 @@ const ProductsGrid = () => {
             ))}
           </div>
         )}
-        <div className="flex justify-center mt-10">
-          <Button>Show all products</Button>
+        <div className="flex justify-center items-center gap-x-2 mt-10">
+          <Button>1</Button>
+          <Button>2</Button>
+          <Button>3</Button>
+          <span className="text-2xl">...</span>
+          <Button>12</Button>
         </div>
       </main>
     </div>

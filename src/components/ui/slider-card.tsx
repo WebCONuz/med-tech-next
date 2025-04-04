@@ -11,7 +11,7 @@ const SliderCard = ({ data }: { data: SlideItem }) => {
       <img
         src={data.image}
         alt="slide-item-img"
-        className="w-full h-[350px] object-cover rounded-md mb-4"
+        className="w-full h-[320px] sm:h-[280px] xl:h-[350px] object-cover rounded-md mb-4"
       />
       <h4 className="text-xl font-bold mb-2 text-center">{data.title}</h4>
     </div>

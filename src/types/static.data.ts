@@ -1,3 +1,4 @@
+// Bu o'chirib tashlanadi
 export const allProducts = [
   {
     id: 1,
@@ -41,6 +42,7 @@ export const allProducts = [
   },
 ];
 
+// Bu o'chirilmaydi
 export const sertificateData = [
   {
     id: 1,
@@ -67,4 +69,11 @@ export const sertificateData = [
     image: "http://www.trustmomed.com/upload/img/201709011024225588.jpg",
     title: "CE-02-5",
   },
+];
+
+// Bu o'chirilmaydi
+export const navLinks = [
+  { name: "About us", href: "/" },
+  { name: "All products", href: "/products" },
+  { name: "Contact us", href: "/contact" },
 ];
