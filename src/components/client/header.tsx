@@ -27,10 +27,6 @@ const Header = () => {
     setIsDark(!isDark);
   };
 
-  const menuBar = () => {
-    setOpenMenu(!openMenu);
-  };
-
   return (
     <header className="shadow relative">
       <div className="bg-main-color">
@@ -154,7 +150,11 @@ const Header = () => {
         </div>
       </div>
       {/* responsive menu bar  */}
-      <div className="sm:hidden fixed top-[100.4px] left-0 z-50 w-full h-[calc(100vh-100px)]">
+      <div
+        className={`sm:hidden fixed top-[100.4px] left-0 w-full h-[calc(100vh-100px)] ${
+          openMenu ? "z-50" : "-z-50"
+        }`}
+      >
         <div
           onClick={() => setOpenMenu(false)}
           className={`bg-[#000000a8] w-full h-full duration-200 ${

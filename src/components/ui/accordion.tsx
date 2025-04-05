@@ -39,11 +39,13 @@ const Accordion = () => {
     <div ref={accordionRef} className="cursor-pointer relative z-10">
       <div
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between gap-x-2 text-gray-600 bg-white border border-gray-400 rounded-md py-2 px-4"
+        className="flex items-center justify-between gap-x-[6px] sm:gap-x-2 text-gray-600 bg-white border border-gray-400 rounded-md py-[6px] sm:py-2 px-3 sm:px-4"
       >
-        <span className="font-bold">{filterText}</span>
+        <span className="font-bold text-sm sm:text-base">{filterText}</span>
         <FaAngleDown
-          className={`duration-200 ${open ? "rotate-180" : "rotate-0"}`}
+          className={`duration-200 text-sm sm:text-base ${
+            open ? "rotate-180" : "rotate-0"
+          }`}
         />
       </div>
       <div
@@ -53,25 +55,25 @@ const Accordion = () => {
       >
         <button
           onClick={() => filterProduct("Default Sorting")}
-          className="w-full text-gray-600 text-start outline-0 border-0 py-[10px] px-4 hover:bg-gray-100 duration-200"
+          className="w-full text-gray-600 text-start outline-0 border-0 text-sm sm:text-base py-2 sm:py-[10px] px-3 sm:px-4 hover:bg-gray-100 duration-200"
         >
           Default Sorting
         </button>
         <button
           onClick={() => filterProduct("Sort by popularity")}
-          className="w-full text-gray-600 text-start outline-0 border-0 py-[10px] px-4 hover:bg-gray-100 duration-200"
+          className="w-full text-gray-600 text-start outline-0 border-0 text-sm sm:text-base py-2 sm:py-[10px] px-3 sm:px-4 hover:bg-gray-100 duration-200"
         >
           Sort by popularity
         </button>
         <button
           onClick={() => filterProduct("Sort by new arrivals")}
-          className="w-full text-gray-600 text-start outline-0 border-0 py-[10px] px-4 hover:bg-gray-100 duration-200"
+          className="w-full text-gray-600 text-start outline-0 border-0 text-sm sm:text-base py-2 sm:py-[10px] px-3 sm:px-4 hover:bg-gray-100 duration-200"
         >
           Sort by new arrivals
         </button>
         <button
           onClick={() => filterProduct("Sort by price")}
-          className="w-full text-gray-600 text-start outline-0 border-0 py-[10px] px-4 hover:bg-gray-100 duration-200"
+          className="w-full text-gray-600 text-start outline-0 border-0 text-sm sm:text-base py-2 sm:py-[10px] px-3 sm:px-4 hover:bg-gray-100 duration-200"
         >
           Sort by price
         </button>
