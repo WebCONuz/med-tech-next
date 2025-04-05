@@ -15,11 +15,11 @@ export default async function OrderItem({ params }: Props) {
   const { id } = await params;
   return (
     <>
-      <section className="pt-15 pb-20">
+      <section className="pt-10 sm:pt-12 md:pt-14 lg:pt-15 pb-12 sm:pb-16 lg:pb-20">
         <div className="container">
-          <div className="w-2/5 mx-auto">
+          <div className="w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-2/5 mx-auto">
             <Title title="Product Order" />
-            <p className="leading-6  mb-8">
+            <p className="leading-6 mb-6 sm:mb-8">
               <b>Dear Customer</b>: <br />
               If you need to know about our products and our services, please
               fill out the following form and send it to us, you can get our
