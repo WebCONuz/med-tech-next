@@ -151,8 +151,8 @@ const Header = () => {
       </div>
       {/* responsive menu bar  */}
       <div
-        className={`sm:hidden fixed top-[100.4px] left-0 w-full h-[calc(100vh-100px)] ${
-          openMenu ? "z-50" : "-z-50"
+        className={`sm:hidden fixed top-[100.4px] z-50 left-0 w-full h-[calc(100vh-100px)] ${
+          openMenu ? "visible" : "invisible"
         }`}
       >
         <div

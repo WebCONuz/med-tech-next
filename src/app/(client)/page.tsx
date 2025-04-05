@@ -81,7 +81,7 @@ export default function About() {
       </section>
 
       <section className="pb-20 xl:pb-24">
-        <div className="container">
+        <div className="container overflow-hidden">
           <Title title="Sertifications" />
           <MainSlider items={sertificateData} />
         </div>
