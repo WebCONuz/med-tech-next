@@ -1,17 +1,19 @@
 "use client";
 
 import Button from "@/components/ui/button";
+import Title from "@/components/ui/title";
 
 const ContactForm = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-4">Have any Questions?</h2>
-      <p className="text-gray-500 leading-7 mb-5 max-w-4/5">
+      <Title title="Have any Questions?" />
+      {/* <h2 className="text-3xl font-bold mb-4">Have any Questions?</h2> */}
+      <p className="text-gray-500 leading-7 mb-5 sm:max-w-4/5">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates
         maxime nihil atque conse
       </p>
 
-      <form className="w-full flex flex-col gap-y-4">
+      <form className="w-full flex flex-col gap-y-2 sm:gap-y-4">
         <input
           type="text"
           className="outline-none border border-gray-300 duration-200 hover:border-main-color focus:border-main-color py-2 px-4 rounded-md"
