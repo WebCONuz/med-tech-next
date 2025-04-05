@@ -66,7 +66,7 @@ const OrderForm = ({ productName }: { productName: string }) => {
         <span className="font-bold sm:font-normal sm:w-[120px] block mb-1 sm:mb-0">
           Type:
         </span>
-        <div className="flex flex-col gap-y-1 sm:gap-y-0 sm:grid sm:grid-cols-2 sm:gap-x-2 md:flex md:gap-x-4">
+        <div className="flex flex-col sm:flex-row gap-y-1 sm:gap-y-0 sm:grid sm:grid-cols-2 sm:gap-x-2 md:flex md:gap-x-4">
           <div className="flex items-center gap-x-2">
             <input id="msg" type="radio" name="radio-type" className="" />
             <label htmlFor="msg">Message</label>
