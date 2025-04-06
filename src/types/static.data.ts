@@ -70,10 +70,3 @@ export const sertificateData = [
     title: "CE-02-5",
   },
 ];
-
-// Bu o'chirilmaydi
-export const navLinks = [
-  { name: "About us", href: "/" },
-  { name: "All products", href: "/products" },
-  { name: "Contact us", href: "/contact" },
-];
