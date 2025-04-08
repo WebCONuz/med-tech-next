@@ -1,14 +1,18 @@
-import type { Metadata } from "next";
+import React from "react";
+import Title from "@/app/[locale]/components/ui/title";
+import AuthForm from "@/app/[locale]/components/admin/auth-form";
 
-export const metadata: Metadata = {
-  title: "Admin",
-  description: "Home page",
+const AuthLogin = () => {
+  return (
+    <main>
+      <div className="container h-screen flex items-center justify-center">
+        <div className="w-2/5 p-5 rounded-md border border-gray-200 shadow-lg">
+          <Title title="Login" />
+          <AuthForm />
+        </div>
+      </div>
+    </main>
+  );
 };
 
-export default function AdminHome() {
-  return (
-    <div className="container py-4 bg-main-color text-white">
-      Admin: Home Page
-    </div>
-  );
-}
+export default AuthLogin;

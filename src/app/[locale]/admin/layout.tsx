@@ -10,10 +10,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div>
-      <h1>Admin Layout</h1>
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 }
