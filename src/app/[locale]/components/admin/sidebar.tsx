@@ -8,7 +8,8 @@ const links = [
   { id: 2, page: "products", href: "/admin/user/products" },
   { id: 3, page: "category", href: "/admin/user/category" },
   { id: 4, page: "orders", href: "/admin/user/orders" },
-  { id: 5, page: "admins", href: "/admin/user/all" },
+  { id: 5, page: "contacts", href: "/admin/user/contact" },
+  { id: 6, page: "admins", href: "/admin/user/all" },
 ];
 
 const Sidebar = () => {
