@@ -103,8 +103,10 @@ const ProductsPage = () => {
                         src="https://cdn.farmako.in/inventory/images/976c7a23ee3e876a9505aa4c23e421ba7aa6d94e/ba727b5f2c522f13775a7b7f8c74065cf38929ea.png"
                         className="w-14 rounded-md shadow-md"
                       />
-                    ) : col == "name" ? (
+                    ) : col === "name" ? (
                       <b className="text-gray-600">{product[col]}</b>
+                    ) : col === "description" ? (
+                      <p className="max-w-[350px]">{product[col]}</p>
                     ) : (
                       product[col]
                     )}
