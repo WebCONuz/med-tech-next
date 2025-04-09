@@ -9,7 +9,7 @@ const Hero = ({
 }) => {
   return (
     <section className="bg-[url(/pharm_tool.jpg)] bg-cover bg-center bg-no-repeat">
-      <div className="bg-[#085843a0]">
+      <div className="bg-[#36337882]">
         <div className="container">
           <div className="py-32 text-center text-white max-w-[600px] mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4">

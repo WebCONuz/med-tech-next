@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --main-theme-color: #10ab81;
-  --main-theme-bg: #c8dde9;
+  --main-theme-color: #363378;
+  --main-theme-bg: #36337828;
 }
 
 @theme inline {
@@ -35,7 +35,7 @@ body {
 
 *::selection {
   color: #fff;
-  background-color: #0d8464;
+  background-color: #524da8;
 }
 
 /* slider css */

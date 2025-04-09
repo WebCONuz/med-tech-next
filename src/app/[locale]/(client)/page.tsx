@@ -28,7 +28,7 @@ export default function About() {
                 alt="about-image"
                 className="w-full h-full object-cover"
               />
-              <div className="w-full h-full absolute top-0 left-0 z-10 bg-[#0858435d] opacity-100 visible duration-200 group-hover:opacity-0 group-hover:invisible"></div>
+              <div className="w-full h-full absolute top-0 left-0 z-10 bg-[#3633783d] opacity-100 visible duration-200 group-hover:opacity-0 group-hover:invisible"></div>
             </div>
             <div className="w-full lg:w-1/2">
               <Title title={t("about_title")} />

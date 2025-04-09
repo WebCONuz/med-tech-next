@@ -93,11 +93,11 @@ const Header = () => {
       <div className="container flex items-center justify-between py-2 border-b border-gray-100">
         <Link href="/" className="block">
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="Logo"
             width={56}
             height={56}
-            className="w-12 lg:w-14 shadow-md rounded-full"
+            className="w-12 lg:w-14 shadow-md rounded-full bg-main-bg"
           />
         </Link>
         <nav className="hidden sm:flex gap-x-6 lg:gap-x-8">
