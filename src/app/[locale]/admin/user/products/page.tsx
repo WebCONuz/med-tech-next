@@ -81,6 +81,7 @@ const ProductsPage = () => {
 
   const editData = (data: productType) => {
     setProd(data);
+    setType("update");
     setOpenProductModal(true);
   };
 
@@ -90,7 +91,6 @@ const ProductsPage = () => {
   };
 
   const openDeleteModal = (data: productType) => {
-    setType("update");
     setProd(data);
     setOpenSure(true);
   };
@@ -114,6 +114,7 @@ const ProductsPage = () => {
         closeModal={() => setOpenProductModal(false)}
         data={prod}
       />
+
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold ">All products</h3>
         <button

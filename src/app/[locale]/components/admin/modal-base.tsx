@@ -12,12 +12,9 @@ const ModalBase = ({
   closeModal: () => void;
   children: React.ReactNode;
 }>) => {
+  if (!isOpen) return null;
   return (
-    <div
-      className={`fixed top-0 left-0 z-50 w-full h-screen flex justify-center items-center duration-200 ${
-        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-      }`}
-    >
+    <div className="fixed top-0 left-0 z-50 w-full h-screen flex justify-center items-center duration-200">
       <div
         onClick={closeModal}
         className="absolute top-0 left-0 z-0 bg-[#000000ca] w-full h-full"

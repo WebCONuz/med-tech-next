@@ -80,6 +80,12 @@ const ProductModal = ({
                 className="py-[6px] px-3 rounded-md border border-gray-300 h-[120px] resize-y text-sm"
                 placeholder={`Product description (${lang.name})`}
               ></textarea>
+              <input
+                type="text"
+                className="py-[6px] px-3 rounded-md border border-gray-300 text-sm bg-gray-100"
+                defaultValue={lang.id}
+                disabled
+              />
             </div>
           ))}
         </div>
