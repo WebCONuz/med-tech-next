@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { IoTrashOutline } from "react-icons/io5";
+import SureModal from "@/app/[locale]/components/admin/modal/sure-modal";
+import ProductModal from "@/app/[locale]/components/admin/modal/product-modal";
 
-type productType = {
+export type productType = {
   id: number;
   name: string;
   images: string;
@@ -60,7 +63,6 @@ const productReal: productType[] = [
     languageId: 1,
   },
 ];
-
 type ColumnType = keyof productType;
 const productColumns: ColumnType[] = [
   "id",
@@ -72,9 +74,56 @@ const productColumns: ColumnType[] = [
 ];
 
 const ProductsPage = () => {
+  const [openSure, setOpenSure] = useState(false);
+  const [openProductModal, setOpenProductModal] = useState(false);
+  const [prod, setProd] = useState<productType>();
+  const [type, setType] = useState<"create" | "update">("create");
+
+  const editData = (data: productType) => {
+    setProd(data);
+    setOpenProductModal(true);
+  };
+
+  const createProduct = () => {
+    setType("create");
+    setOpenProductModal(true);
+  };
+
+  const openDeleteModal = (data: productType) => {
+    setType("update");
+    setProd(data);
+    setOpenSure(true);
+  };
+
+  const deleteData = () => {
+    console.log(`Product is Deleted: ${prod?.id}`);
+    setOpenSure(false);
+  };
+
   return (
     <>
-      <h3 className="text-xl font-bold mb-4">All products</h3>
+      <SureModal
+        title="Are you shure delete this product?"
+        isOpen={openSure}
+        closeModal={() => setOpenSure(false)}
+        actionFn={deleteData}
+      />
+      <ProductModal
+        type={type}
+        isOpen={openProductModal}
+        closeModal={() => setOpenProductModal(false)}
+        data={prod}
+      />
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-xl font-bold ">All products</h3>
+        <button
+          onClick={createProduct}
+          type="submit"
+          className="outline-none border-0 bg-main-color text-white px-4 py-2 rounded-md"
+        >
+          Create new product
+        </button>
+      </div>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -114,8 +163,14 @@ const ProductsPage = () => {
                 ))}
                 <td className="px-6 py-4 text-right">
                   <div className="flex gap-x-2 justify-end">
-                    <CiEdit className="text-green-500 text-lg cursor-pointer" />
-                    <IoTrashOutline className="text-red-500 text-lg cursor-pointer" />
+                    <CiEdit
+                      onClick={() => editData(product)}
+                      className="text-green-500 text-lg cursor-pointer"
+                    />
+                    <IoTrashOutline
+                      onClick={() => openDeleteModal(product)}
+                      className="text-red-500 text-lg cursor-pointer"
+                    />
                   </div>
                 </td>
               </tr>
