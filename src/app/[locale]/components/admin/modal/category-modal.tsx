@@ -30,6 +30,8 @@ interface CategoryFormData {
   logo: File | string;
   translations: Translation[];
 }
+
+// props structure
 interface CategoryModalProps {
   isOpen: boolean;
   closeModal: () => void;
@@ -55,8 +57,6 @@ const CategoryModal = ({
 
   // pill data for update
   useEffect(() => {
-    console.log(initialData);
-
     if (initialData) {
       setFormData({
         logo: initialData.logo,
@@ -116,7 +116,7 @@ const CategoryModal = ({
   };
 
   return (
-    <ModalBase isOpen={isOpen} closeModal={reset} classes="w-2/3">
+    <ModalBase isOpen={isOpen} closeModal={reset} classes="w-1/2">
       <h3 className="text-lg font-bold text-main-color mb-4 uppercase text-center">
         {initialData ? "Update category" : "Create category"}
       </h3>

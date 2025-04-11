@@ -17,6 +17,7 @@ export type categoryType = {
   createdAt: string;
   updatedAt: string;
   logo: string;
+  num?: number;
   translations: langCategory[];
 };
 const allCategories: categoryType[] = [
@@ -132,11 +133,12 @@ const CategoryPage = () => {
   const [category, setCategory] = useState<categoryType>();
 
   const editData = (data: categoryType) => {
-    setCategory(data);
+    setCategory({ ...data, num: Math.random() });
     setOpenCategoryModal(true);
   };
 
   const createCategory = () => {
+    setCategory(undefined);
     setOpenCategoryModal(true);
   };
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ModalBase from "../modal-base";
 import { productType } from "../../../admin/user/products/page";
 
+// language type
 type langType = {
   id: number;
   name: string;
@@ -21,89 +22,231 @@ const langs: langType[] = [
   },
 ];
 
-const ProductModal = ({
-  type,
-  isOpen,
-  closeModal,
-  data,
-}: Readonly<{
-  type: "create" | "update";
+// category type
+interface Category {
+  id: number;
+  name: string;
+}
+const categories: Category[] = [
+  {
+    id: 1,
+    name: "Diagnostic Tools",
+  },
+  {
+    id: 2,
+    name: "Surgical Instruments",
+  },
+  {
+    id: 3,
+    name: "Therapeutic Devices",
+  },
+];
+
+// product type
+interface Translation {
+  name: string;
+  description: string;
+  languageId: number;
+}
+interface ProductFormData {
+  categoryId: number;
+  images: File | string;
+  translations: Translation[];
+}
+
+// props structure
+interface ProductModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  data: productType | undefined;
-}>) => {
-  const actionFn = () => {
-    if (type === "create") {
-      console.log("Create Product");
-    } else if (type === "update") {
-      console.log("Edit Product");
+  initialData?: {
+    categoryId: number;
+    images: string;
+    translations: Translation[];
+  };
+}
+
+const ProductModal = ({
+  isOpen,
+  closeModal,
+  initialData,
+}: ProductModalProps) => {
+  // form values
+  const [formData, setFormData] = useState<ProductFormData>({
+    categoryId: categories[0]?.id || 0,
+    images: "",
+    translations: langs.map((lang) => ({
+      name: "",
+      description: "",
+      languageId: lang.id,
+    })),
+  });
+
+  // close & reset modal
+  const reset = () => {
+    setFormData({
+      categoryId: categories[0]?.id || 0,
+      images: "",
+      translations: langs.map((lang) => ({
+        name: "",
+        description: "",
+        languageId: lang.id,
+      })),
+    });
+
+    closeModal();
+  };
+
+  // Initial data ni to'ldirish
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        categoryId: initialData.categoryId,
+        images: initialData.images,
+        translations: langs.map((lang) => {
+          const existing = initialData.translations.find(
+            (t) => t.languageId === lang.id
+          );
+          return {
+            name: existing?.name || "",
+            description: existing?.description || "",
+            languageId: lang.id,
+          };
+        }),
+      });
     }
-    console.log(data);
+  }, [initialData]);
+
+  // handle file input
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) {
+      setFormData((prev) => ({ ...prev, logo: e.target.files![0] }));
+    }
+  };
+
+  // handle translations input
+  const handleTranslationChange = (
+    languageId: number,
+    field: "name" | "description",
+    value: string
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      translations: prev.translations.map((t) =>
+        t.languageId === languageId ? { ...t, [field]: value } : t
+      ),
+    }));
+  };
+
+  // CREATE & UPDATE LOGIC
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (initialData) {
+      console.log("Update: ", formData); // UPDATE LOGIC
+    } else {
+      console.log("Create: ", formData); // CREATE LOGIC
+    }
+    reset();
   };
   return (
-    <ModalBase isOpen={isOpen} closeModal={closeModal} classes="w-2/3">
+    <ModalBase isOpen={isOpen} closeModal={reset} classes="w-2/3">
       <h3 className="text-lg font-bold text-main-color mb-4 uppercase text-center">
-        {type} Data
+        {initialData ? "Update product" : "Create product"}
       </h3>
-      <form className="block">
-        <div className="flex gap-x-3 mb-2">
-          <label className="flex flex-col w-1/2">
-            <span className="text-sm text-gray-500 mb-1">Category</span>
-            <select className="py-[6px] px-3 text-sm rounded-md border border-gray-300">
-              <option value="1">Category-1</option>
-              <option value="2">Category-2</option>
-              <option value="3">Category-3</option>
-              <option value="4">Category-4</option>
-              <option value="5">Category-5</option>
+      <form className="block" onSubmit={handleSubmit}>
+        <div className="flex gap-x-3 mb-3">
+          <div className="flex flex-col w-1/2">
+            <label className="block text-sm text-gray-500 mb-1">Category</label>
+            <select
+              value={formData.categoryId}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  categoryId: Number(e.target.value),
+                }))
+              }
+              className="py-[10px] px-3 text-sm rounded-md border border-gray-500"
+              required
+            >
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </select>
-          </label>
-          <label className="flex flex-col w-1/2">
-            <span className="text-sm text-gray-500 mb-1">Product image</span>
+          </div>
+
+          <div className="flex flex-col w-1/2">
+            <label className="text-sm text-gray-500 mb-1">Product image</label>
             <input
               type="file"
-              className="py-[6px] px-3 text-sm rounded-md border border-gray-300"
+              required={initialData ? false : true}
+              onChange={handleFileChange}
+              className="w-full p-2 border rounded-md border-gray-500"
             />
-          </label>
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-3">
-          {langs.map((lang) => (
-            <div
-              key={lang.id}
-              className="flex flex-col gap-y-2 border border-gray-300 p-2 shadow rounded-md"
-            >
-              <input
-                type="text"
-                placeholder={`Product name (${lang.name})`}
-                className="py-[6px] px-3 rounded-md border border-gray-300 text-sm"
-              />
-              <textarea
-                className="py-[6px] px-3 rounded-md border border-gray-300 h-[120px] resize-y text-sm"
-                placeholder={`Product description (${lang.name})`}
-              ></textarea>
-              <input
-                type="text"
-                className="py-[6px] px-3 rounded-md border border-gray-300 text-sm bg-gray-100"
-                defaultValue={lang.id}
-                disabled
-              />
-            </div>
-          ))}
+          {langs.map((lang) => {
+            const translation = formData.translations.find(
+              (t) => t.languageId === lang.id
+            );
+            return (
+              <div
+                key={lang.id}
+                className="p-3 border border-gray-500 rounded-md shadow"
+              >
+                <h3 className="mb-2 font-bold">Translation ({lang.name})</h3>
+
+                <div className="mb-2">
+                  <label className="text-sm text-gray-500 mb-1 block">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    value={translation?.name || ""}
+                    onChange={(e) =>
+                      handleTranslationChange(lang.id, "name", e.target.value)
+                    }
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm text-gray-500 mb-1 block">
+                    Description
+                  </label>
+                  <textarea
+                    value={translation?.description || ""}
+                    onChange={(e) =>
+                      handleTranslationChange(
+                        lang.id,
+                        "description",
+                        e.target.value
+                      )
+                    }
+                    className="w-full p-2 border rounded-md h-24"
+                    required
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="flex gap-x-2 mt-4">
+        <div className="flex justify-end gap-x-2 mt-4">
           <button
-            onClick={closeModal}
+            onClick={reset}
             type="button"
             className="outline-none border-0 bg-gray-500 text-white px-4 py-2 rounded-md"
           >
             Cancel
           </button>
           <button
-            onClick={actionFn}
             type="submit"
             className="outline-none border-0 bg-green-600 text-white px-4 py-2 rounded-md"
           >
-            Yes
+            {initialData ? "Update" : "Create"}
           </button>
         </div>
       </form>

@@ -102,13 +102,23 @@ const Header = () => {
         </Link>
         <nav className="hidden sm:flex gap-x-6 lg:gap-x-8">
           {navLinks.map((item, index) => {
-            const isActiveLink = pathname === item.href;
+            let isActiveLink;
+            if (item.href !== "/") {
+              isActiveLink = pathname.includes(item.href);
+            } else {
+              if (pathname.split("/").length === 2) {
+                isActiveLink = true;
+              } else {
+                isActiveLink = false;
+              }
+            }
+
             return (
               <Link
                 key={index}
                 href={item.href}
                 className={`font-semibold ${
-                  isActiveLink ? "text-main-color" : "text-gray-600"
+                  isActiveLink ? "text-blue-700" : "text-main-color"
                 }`}
               >
                 {item.name}
@@ -159,13 +169,22 @@ const Header = () => {
           }`}
         >
           {navLinks.map((item, index) => {
-            const isActiveLink = pathname === item.href;
+            let isActiveLink;
+            if (item.href !== "/") {
+              isActiveLink = pathname.includes(item.href);
+            } else {
+              if (pathname.split("/").length === 2) {
+                isActiveLink = true;
+              } else {
+                isActiveLink = false;
+              }
+            }
             return (
               <Link
                 key={index}
                 href={item.href}
-                className={`font-semibold text-lg ${
-                  isActiveLink ? "text-main-color" : "text-gray-600"
+                className={`font-semibold ${
+                  isActiveLink ? "text-blue-700" : "text-main-color"
                 }`}
                 onClick={() => setOpenMenu(false)}
               >
