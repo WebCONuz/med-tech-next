@@ -39,9 +39,9 @@ export interface productType {
   updatedAt: string;
   images: string;
   num?: number;
-  Order: OrderType[];
+  Order?: OrderType[];
   translations: TranslationType[];
-  category: {
+  category?: {
     translations: LangType[];
   };
 }
