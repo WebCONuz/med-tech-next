@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { IoTrashOutline } from "react-icons/io5";
+import SureModal from "@/app/[locale]/components/admin/modal/sure-modal";
+import AdminModal from "@/app/[locale]/components/admin/modal/admin-modal";
 
-type adminType = {
+export type adminType = {
   id: number;
   name: string;
   email: string;
@@ -11,6 +14,7 @@ type adminType = {
   refresh_token: null | string;
   createdAt: string;
   updatedAt: string;
+  num?: number;
 };
 const admins: adminType[] = [
   {
@@ -47,9 +51,55 @@ const admins: adminType[] = [
 ];
 
 const AdminPage = () => {
+  const [openSure, setOpenSure] = useState(false);
+  const [adminId, setAdminId] = useState<number>();
+  const [admin, setAdmin] = useState<adminType>();
+  const [openAdminModal, setOpenAdminModal] = useState(false);
+
+  const editData = (data: adminType) => {
+    setAdmin({ ...data, num: Math.random() });
+    setOpenAdminModal(true);
+  };
+
+  const createAdmin = () => {
+    setAdmin(undefined);
+    setOpenAdminModal(true);
+  };
+
+  const openDeleteModal = (id: number) => {
+    setAdminId(id);
+    setOpenSure(true);
+  };
+
+  const deleteData = () => {
+    console.log(`Contact is Deleted: ${adminId}`);
+    setOpenSure(false);
+  };
+
   return (
     <>
-      <h3 className="text-xl font-bold mb-4">All Admins</h3>
+      <SureModal
+        title="Are you shure delete this admin?"
+        isOpen={openSure}
+        closeModal={() => setOpenSure(false)}
+        actionFn={deleteData}
+      />
+      <AdminModal
+        isOpen={openAdminModal}
+        closeModal={() => setOpenAdminModal(false)}
+        initialData={admin}
+      />
+
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-xl font-bold ">All admins</h3>
+        <button
+          onClick={createAdmin}
+          type="submit"
+          className="outline-none border-0 bg-main-color text-white px-4 py-2 rounded-md"
+        >
+          Create new admin
+        </button>
+      </div>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -96,8 +146,14 @@ const AdminPage = () => {
                 </td>
                 <td className="px-6 py-4 text-right">
                   <div className="flex gap-x-2 justify-end">
-                    <CiEdit className="text-green-500 text-lg cursor-pointer" />
-                    <IoTrashOutline className="text-red-500 text-lg cursor-pointer" />
+                    <CiEdit
+                      onClick={() => editData(admin)}
+                      className="text-green-500 text-lg cursor-pointer"
+                    />
+                    <IoTrashOutline
+                      onClick={() => openDeleteModal(admin?.id)}
+                      className="text-red-500 text-lg cursor-pointer"
+                    />
                   </div>
                 </td>
               </tr>

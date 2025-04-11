@@ -167,7 +167,7 @@ const OrderPage = () => {
   };
 
   const deleteData = () => {
-    console.log(`Product is Deleted: ${orderId}`);
+    console.log(`Order is Deleted: ${orderId}`);
     setOpenSure(false);
   };
   return (

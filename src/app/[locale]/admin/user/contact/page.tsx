@@ -1,6 +1,7 @@
-import React from "react";
-import { CiEdit } from "react-icons/ci";
+"use client";
+import React, { useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
+import SureModal from "@/app/[locale]/components/admin/modal/sure-modal";
 
 type contactType = {
   id: number;
@@ -32,8 +33,28 @@ const contacts: contactType[] = [
 ];
 
 const ContactPage = () => {
+  const [openSure, setOpenSure] = useState(false);
+  const [contactId, setContactId] = useState<number>();
+
+  const openDeleteModal = (id: number) => {
+    setContactId(id);
+    setOpenSure(true);
+  };
+
+  const deleteData = () => {
+    console.log(`Contact is Deleted: ${contactId}`);
+    setOpenSure(false);
+  };
+
   return (
     <>
+      <SureModal
+        title="Are you shure delete this contact?"
+        isOpen={openSure}
+        closeModal={() => setOpenSure(false)}
+        actionFn={deleteData}
+      />
+
       <h3 className="text-xl font-bold mb-4">All Contacts</h3>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -76,9 +97,11 @@ const ContactPage = () => {
                   <p className="max-w-[400px]">{contact.message}</p>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <div className="flex gap-x-2 justify-end">
-                    <CiEdit className="text-green-500 text-lg cursor-pointer" />
-                    <IoTrashOutline className="text-red-500 text-lg cursor-pointer" />
+                  <div className="flex justify-center">
+                    <IoTrashOutline
+                      onClick={() => openDeleteModal(contact?.id)}
+                      className="text-red-500 text-lg cursor-pointer"
+                    />
                   </div>
                 </td>
               </tr>

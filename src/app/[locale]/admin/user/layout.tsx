@@ -13,7 +13,7 @@ export default function RootLayout({
       </div>
       <div className="h-screen w-4/5 overflow-y-auto">
         <Header />
-        <main className="px-4 pt-4">{children}</main>
+        <main className="px-4 py-4 pb-8">{children}</main>
       </div>
     </div>
   );
