@@ -7,9 +7,10 @@ const links = [
   { id: 1, page: "home", href: "/admin/user" },
   { id: 2, page: "products", href: "/admin/user/products" },
   { id: 3, page: "category", href: "/admin/user/category" },
-  { id: 4, page: "orders", href: "/admin/user/orders" },
-  { id: 5, page: "contacts", href: "/admin/user/contact" },
-  { id: 6, page: "admins", href: "/admin/user/all" },
+  { id: 4, page: "languages", href: "/admin/user/lang" },
+  { id: 5, page: "orders", href: "/admin/user/orders" },
+  { id: 6, page: "contacts", href: "/admin/user/contact" },
+  { id: 7, page: "admins", href: "/admin/user/all" },
 ];
 
 const Sidebar = () => {

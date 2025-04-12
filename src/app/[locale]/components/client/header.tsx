@@ -30,6 +30,18 @@ const Header = () => {
     { name: t("nav.item2"), href: "/products" },
     { name: t("nav.item3"), href: "/contact" },
   ];
+  const langs: string[] = ["en", "ru", "uz"];
+  const activeLink = (pageHref: string): boolean => {
+    const pathSegments = pathname.split("/");
+    const lang = langs.includes(pathSegments[1]) ? pathSegments[1] : "en";
+    const href =
+      lang === "en"
+        ? pageHref
+        : pageHref === "/"
+        ? `/${lang}`
+        : `/${lang}${pageHref}`;
+    return href === pathname;
+  };
 
   const darkMode = () => {
     setIsDark(!isDark);
@@ -101,30 +113,17 @@ const Header = () => {
           />
         </Link>
         <nav className="hidden sm:flex gap-x-6 lg:gap-x-8">
-          {navLinks.map((item, index) => {
-            let isActiveLink;
-            if (item.href !== "/") {
-              isActiveLink = pathname.includes(item.href);
-            } else {
-              if (pathname.split("/").length === 2) {
-                isActiveLink = true;
-              } else {
-                isActiveLink = false;
-              }
-            }
-
-            return (
-              <Link
-                key={index}
-                href={item.href}
-                className={`font-semibold ${
-                  isActiveLink ? "text-blue-700" : "text-main-color"
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+          {navLinks.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              className={`font-semibold ${
+                activeLink(item.href) ? "text-blue-700" : "text-main-color"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
         <div className="relative hidden md:block">
           <input
@@ -168,30 +167,18 @@ const Header = () => {
             openMenu ? "left-0" : "-left-full"
           }`}
         >
-          {navLinks.map((item, index) => {
-            let isActiveLink;
-            if (item.href !== "/") {
-              isActiveLink = pathname.includes(item.href);
-            } else {
-              if (pathname.split("/").length === 2) {
-                isActiveLink = true;
-              } else {
-                isActiveLink = false;
-              }
-            }
-            return (
-              <Link
-                key={index}
-                href={item.href}
-                className={`font-semibold ${
-                  isActiveLink ? "text-blue-700" : "text-main-color"
-                }`}
-                onClick={() => setOpenMenu(false)}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+          {navLinks.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              className={`font-semibold ${
+                activeLink(item.href) ? "text-blue-700" : "text-main-color"
+              }`}
+              onClick={() => setOpenMenu(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
       </div>
     </header>
